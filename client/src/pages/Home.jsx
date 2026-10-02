@@ -17,7 +17,7 @@ const Home = () => {
 
     const fetchEvents = async () => {
         try {
-            const { data } = await api.get(`/events?search=${search}`);
+           const { data } = await api.get(search ? `/events?search=${encodeURIComponent(search)}` : '/events');
             setEvents(data);
         } catch (error) {
             console.error('Error fetching events:', error);
